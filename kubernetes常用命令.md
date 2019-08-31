@@ -36,12 +36,45 @@
 &nbsp;&nbsp;&nbsp;&nbsp;kubernetes提供了很多资源对象，开发和运维人员可以通过这些对象对容器进行编排操作。在下表中，是kubectl所支持的资源对象类型，以及它们的缩略别名。
 
 | **资源对象类型** | **缩略别名** |
-|:----|:----|
-|apiservices| asd|
+|:----:|:----:|
+|apiservices||
 |certificatesigningrequests|csr|
-|clusters|asd |
+|clusters||
 |clusterrolebindings||
-
+|clusterroles||
+|componentstatuses|cs|
+|configmaps|cm|
+|controllerrevisions||
+|cronjobs||
+|customresourcedefinition|crd|
+|daemonsets|ds|
+|deployments|deploy|
+|endpoints|ep|
+|events|ev|
+|horizontalpodautoscalers|hpa|
+|ingresses|ing|
+|jobs||
+|limitranges|limits|
+|namespaces|ns|
+|networkpolicies|netpol|
+|nodes|no|
+|persistentvolumeclaims|pvc|
+|persistentvolumes|pv|
+|poddisruptionbudget|pdb|
+|podpreset||
+|pods|po|
+|podsecuritypolicies|psp|
+|podtemplates||
+|replicasets|rs|
+|replicationcontrollers|rc|
+|resourcequotas|quota|
+|rolebindings||
+|roles||
+|secrets||
+|serviceaccounts|sa|
+|services|svc|
+|statefulsets||
+|storageclasses||
 
 ### 1.3 输出选项
 &nbsp;&nbsp;&nbsp;&nbsp;kubectl默认执行完命令后的输出格式为纯文本格式，可以通过-o或者–output字段指定命令的输出格式。
