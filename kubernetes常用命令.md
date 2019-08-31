@@ -1,5 +1,6 @@
-## 1 kubectl命令介绍
-### 1.1 基本命令
+
+# 1 kubectl命令介绍
+## 1.1 基本命令
 &nbsp;&nbsp;&nbsp;&nbsp;Kubectl是kubernetes的命令行工具。职责是对集群中资源对象进行操作，这些操作包括对资源对象的增、删、改、查以及高级操作（滚动升级）等。下表中显示了kubectl支持的所有操作命令，以及这些命令的语法和描述信息。
 &nbsp;&nbsp;&nbsp;&nbsp;Kubernetes中所有组件都是资源，以下命令适用于所有组件。
 
@@ -32,7 +33,7 @@
 | **version**|kubectl version [–client] [flags]|显示运行在客户端和服务器端的Kubernetes版本
 
 
-## 1.2 资源对象
+### 1.2 资源对象
 &nbsp;&nbsp;&nbsp;&nbsp;kubernetes提供了很多资源对象，开发和运维人员可以通过这些对象对容器进行编排操作。在下表中，是kubectl所支持的资源对象类型，以及它们的缩略别名。
 
 | **资源对象类型** | **缩略别名** |
