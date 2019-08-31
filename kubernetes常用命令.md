@@ -1,6 +1,7 @@
+# kubernetes常用命令
 
-# 1 kubectl命令介绍
-## 1.1 基本命令
+## 1 kubectl命令介绍
+### 1.1 基本命令
 &nbsp;&nbsp;&nbsp;&nbsp;Kubectl是kubernetes的命令行工具。职责是对集群中资源对象进行操作，这些操作包括对资源对象的增、删、改、查以及高级操作（滚动升级）等。下表中显示了kubectl支持的所有操作命令，以及这些命令的语法和描述信息。
 &nbsp;&nbsp;&nbsp;&nbsp;Kubernetes中所有组件都是资源，以下命令适用于所有组件。
 
@@ -93,7 +94,7 @@
 |\-o=wide|输出带有附加信息的纯文本格式。对于Pod对象，将会包含Node名称。|
 |\-o=yaml|输出YAML格式的API对象|
 
-## 2.1 kubectl常用实例
+## 2 kubectl常用实例
 ### 2.1 集群相关
 
 + 查看集群组件状态
@@ -153,7 +154,7 @@
 
         kubectl delete pods {pod-name}
 
-### 2.2.2 deployment
+#### 2.2.2 deployment
 
 + 使用命令直接创建创建deployment
 
@@ -203,7 +204,7 @@
 
         kubectl rollout history deployment {deployment-name} --revision=2
 
-### 2.2.3 service
+#### 2.2.3 service
 
 + 使用yaml创建service
 
@@ -217,57 +218,57 @@
 
         kubectl delete svc {servier-name}
 
-### 2.2.4 其它   
-+ 编辑资源
+### 2.3 其它   
+#### 2.3.1 编辑资源
 
         kubectl edit {resource-type}/{resource-name}
         kubectl edit –f {yaml-name}
 
-+ 查看endpoint**
+#### 2.3.2 查看endpoint**
         
         kubectl get endpoints
 
-+ 查看Yaml语法**
+#### 2.3.3 查看Yaml语法**
       
         kubectl explain pod
         kubectl explain pod.spec \| grep -i "containers" 
 
-+ 检验yarm语法
+#### 2.3.4 检验yarm语法
 
         kubectl create -f {yaml-name}.yaml --validate
 
-+ 使用yaml文件删除pod**
+#### 2.3.5 使用yaml文件删除pod**
 
         kubectl delete -f {yaml-name}.yaml
 
-## 2.3  Docker相关
-### 2.3.1 容器命令
-+ 查看容器进程
+## 3  Docker相关
+### 3.1 容器命令
+#### 3.1.1 查看容器进程
 
         docker ps\|grep {container-name}
 
-+ 查看容器日志
+#### 3.1.2 查看容器日志
 
         docker logs --tail=500 {container-id}
 
-+ 进入容器内部
+#### 3.1.3 进入容器内部
 
         docker exec -it {container} /bin/bash
 
-### 2.3.2 镜像命令
-+ 镜像列表
+### 3.2 镜像命令
+#### 3.2.1 查看镜像列表
         
         docker images
 
-+ **导出镜像**
+#### 3.2.2 导出镜像
 
         docker save -o {output-path} {repository:tag}
 
-+ 导入镜像
+#### 3.2.3 导入镜像
 
         docker load --input {image-tar}
 
-### 2.3.4 其它
+#### 3.2.4 其它
 + 修改cgroupdriver**
 
         vi /etc/docker/daemon.json
