@@ -34,7 +34,7 @@
 ## 1.2 资源对象
 &nbsp;&nbsp;&nbsp;&nbsp;kubernetes提供了很多资源对象，开发和运维人员可以通过这些对象对容器进行编排操作。在下表中，是kubectl所支持的资源对象类型，以及它们的缩略别名。
 | **资源对象类型** | **缩略别名** |
-|:----:|:----:|
+|:--|:--|
 |apiservices| |
 |certificatesigningrequests|csr|
 |clusters| |
