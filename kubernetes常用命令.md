@@ -209,6 +209,10 @@
 
         kubectl describe deployment {deployment-name}
 
++ 运行某个deployment为对外服务
+
+        kubectl expose deployment {depoloyment-name} -n {namespace-name} --type=NodePort --port={port}
+
 + 查看replicaset
       
         kubectl get rs
@@ -252,56 +256,79 @@
         kubectl delete svc {servier-name}
 
 ### 2.3 其它
-#### 2.3.1 编辑资源
++ 编辑资源
 
         kubectl edit {resource-type}/{resource-name}
         kubectl edit –f {yaml-name}
 
-#### 2.3.2 查看endpoint**
++ 查看endpoint**
         
         kubectl get endpoints
 
-#### 2.3.3 查看Yaml语法**
++ 查看Yaml语法**
       
         kubectl explain pod
         kubectl explain pod.spec \| grep -i "containers" 
 
-#### 2.3.4 检验yarm语法
++ 检验yarm语法
 
         kubectl create -f {yaml-name}.yaml --validate
 
-#### 2.3.5 使用yaml文件删除pod**
++ 使用yaml文件删除pod
 
         kubectl delete -f {yaml-name}.yaml
 
++ 获得dashboard登录授权码
+
+        kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep dashboard | awk '{print $1}')
+
++ 修改dashboard管理权限
+
+        vi /etc/kubernetes/dashboard.yaml
+
+----
+
+                apiVersion: rbac.authorization.k8s.io/v1
+                kind: ClusterRoleBinding
+                metadata:
+                name: heapster-binding
+                roleRef:
+                apiGroup: rbac.authorization.k8s.io
+                kind: ClusterRole
+                name: cluster-admin
+                subjects:
+                - kind: ServiceAccount
+                name: heapster
+                namespace: kube-system
+
 ## 3  Docker相关
-### 3.1 容器命令
-#### 3.1.1 查看容器进程
+### 3.1 容器
++ 查看容器进程
 
         docker ps\|grep {container-name}
 
-#### 3.1.2 查看容器日志
++ 查看容器日志
 
         docker logs --tail=500 {container-id}
 
-#### 3.1.3 进入容器内部
++ 进入容器内部
 
         docker exec -it {container} /bin/bash
 
-### 3.2 镜像命令
-#### 3.2.1 查看镜像列表
+### 3.2 镜像
++ 查看镜像列表
         
         docker images
 
-#### 3.2.2 导出镜像
++ 导出镜像
 
         docker save -o {output-path} {repository:tag}
 
-#### 3.2.3 导入镜像
++ 导入镜像
 
         docker load --input {image-tar}
 
-#### 3.2.4 其它
+### 3.3 其它
 + 修改cgroupdriver**
 
         vi /etc/docker/daemon.json
